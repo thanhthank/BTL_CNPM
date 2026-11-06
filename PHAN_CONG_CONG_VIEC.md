@@ -18,164 +18,172 @@
 
 ---
 
-## 👥 2. Bảng phân công chi tiết cho 9 thành viên (Mục 1.5 & 1.6)
+## 👥 2. Phân chia công việc theo 2 khối vai trò: DT và rAI
 
-### 2.1. Phân loại vai trò
-- **DT (Development Team - 5 thành viên):** Chịu trách nhiệm thiết kế kiến trúc kỹ thuật, CSDL, lập trình giao diện, backend APIs, tích hợp và kiểm thử phần mềm.
-- **rAI (Research / Analysis / Information & Quality - 4 thành viên):** Chịu trách nhiệm khảo sát thực tế, phân tích nghiệp vụ, mô hình hóa quy trình (Activity/Use Case), chuẩn bị bộ dữ liệu mẫu, chuẩn hóa tài liệu báo cáo và quản lý quy chế đạo đức AI (AUR).
+Dự án được phân chia thành **2 khối vai trò chính** (theo đúng Bảng 1.5):
+- **Khối DT (Development Team - 5 thành viên):** Chịu trách nhiệm toàn bộ về mặt Kỹ thuật — Kiến trúc, Cơ sở dữ liệu, Lập trình Frontend/Backend, Tích hợp hệ thống, Kiểm thử tự động và Đóng gói phát hành.
+- **Khối rAI (Research, Analysis & Information / AI Governance - 4 thành viên):** Chịu trách nhiệm Khảo sát thực tế, Phân tích nghiệp vụ chi tiết, Mô hình hóa (Use Case, Activity), Thiết lập bộ dữ liệu mẫu (Golden Data), Chuẩn hóa toàn bộ quyển Báo cáo môn học và Quản lý Đạo đức/Nhật ký AI (Phụ lục Z).
 
----
-
-### 2.2. Chi tiết phân công từng thành viên
-
-#### 👤 1. Vũ Thị Thùy Dung — DT (Frontend & UI/UX Lead)
-* **Vai trò:** Lập trình Frontend & Thiết kế trải nghiệm người dùng (UI/UX).
-* **Nhánh Git phụ trách:** `feature/dung-frontend-ui`
-* **Nhiệm vụ chi tiết:**
-  - Thiết kế bản vẽ giao diện mẫu (Mockup/Wireframe hoặc Figma) cho toàn bộ các màn hình chức năng.
-  - Xây dựng giao diện cho 2 phân hệ người dùng chính: **Người quản lý / Chủ cơ sở** (Dashboard quản trị, bảng phòng, danh sách hợp đồng, bảng điện nước, hóa đơn, sự cố) và **Khách thuê** (Xem thông tin phòng, xem hóa đơn, gửi yêu cầu sửa chữa).
-  - Kết nối giao diện với các RESTful APIs của Backend.
-  - Tối ưu hóa giao diện hiển thị đa thiết bị (Responsive Design) trên cả máy tính (Desktop/Laptop) và điện thoại thông minh (Mobile Web).
-* **Sản phẩm bàn giao:**
-  - Bộ Mockup giao diện mẫu;
-  - Mã nguồn hoàn chỉnh các trang frontend (`src/frontend/`);
-  - Giao diện đã kết nối dữ liệu thật và vượt qua bài test hiển thị trên đa kích thước màn hình.
-* **Tiêu chí hoàn thành (DoD):** Giao diện chạy mượt mà, không vỡ layout, thao tác dễ dàng trên cả trình duyệt Desktop và Mobile; mã nguồn được review và merge vào `develop`.
+```
+┌────────────────────────────────────────────────────────────────────────────────────────┐
+│                                 MÔ HÌNH PHỐI HỢP LIÊN VAI TRÒ                         │
+├───────────────────────────────────────────┬────────────────────────────────────────────┤
+│   KHỐI rAI (Khảo sát, Phân tích & Báo cáo) │    KHỐI DT (Phát triển Kỹ thuật & Test)    │
+├───────────────────────────────────────────┼────────────────────────────────────────────┤
+│ • Nguyễn Hải Long (BA Core)               │ ──> • Nguyễn Đình Đức (DB & Backend Core) │
+│ • Bùi Phương Minh (BA Tài chính)          │ ──> • Nguyễn Hoàng Long (Backend Finance)  │
+│ • Nguyễn Tuyết Mai (BA Sửa chữa & Khảo sát)│ ──> • Ninh Văn Thành Trung (Auth & Repair) │
+│ • Vũ Thị Thanh (Lead Doc, NFR & AI Policy)│ ──> • Vũ Thị Thùy Dung (Frontend UI/UX)   │
+│                                           │ ──> • Nguyễn Đình Ước (QA/QC Test Lead)   │
+└───────────────────────────────────────────┴────────────────────────────────────────────┘
+```
 
 ---
 
-#### 👤 2. Nguyễn Đình Đức — DT (Database & Core Backend Lead)
-* **Vai trò:** Chủ trì thiết kế CSDL & Backend phân hệ Cốt lõi (Căn hộ, Khách thuê, Hợp đồng).
-* **Nhánh Git phụ trách:** `feature/duc-core-backend`
-* **Nhiệm vụ chi tiết:**
-  - Chủ trì thiết kế mô hình dữ liệu quan hệ (ERD) và cơ sở dữ liệu vật lý (Physical Schema, bảng, khóa chính, khóa ngoại, ràng buộc toàn vẹn).
-  - Phối hợp với nhóm BA để chuẩn hóa mô hình và vẽ **Class Diagram** chi tiết cho hệ thống.
-  - Lập trình backend APIs cho phân hệ Quản lý căn hộ (thêm, sửa, xóa, lọc theo trạng thái phòng: trống, đã thuê, bảo trì).
-  - Lập trình backend APIs cho phân hệ Hồ sơ khách thuê (thông tin cá nhân, CCCD, số điện thoại, người ở cùng).
-  - Lập trình backend APIs cho phân hệ Hợp đồng thuê (tạo hợp đồng mới, gia hạn, chấm dứt, tính tiền cọc, ràng buộc ngày bắt đầu/kết thúc).
-* **Sản phẩm bàn giao:**
+### 🅰️ KHỐI DT (DEVELOPMENT TEAM — 5 THÀNH VIÊN KỸ THUẬT)
+
+#### 1. Vũ Thị Thùy Dung [DT] — Frontend & UI/UX Engineer
+- **Vị trí / Vai trò:** Kỹ sư giao diện người dùng (Frontend Lead & UI/UX Designer).
+- **Thư mục mã nguồn phụ trách trên Git:** `src/frontend/`
+- **Nhánh Git:** `feature/dung-ui`
+- **Nhiệm vụ cụ thể:**
+  1. Thiết kế Mockup / Wireframe mẫu cho toàn bộ các màn hình hệ thống.
+  2. Lập trình giao diện người dùng cho phân hệ **Quản lý** (Dashboard, Quản lý phòng, Hợp đồng, Nhập điện nước, Hóa đơn, Quản lý sửa chữa).
+  3. Lập trình giao diện cho phân hệ **Khách thuê** (Xem thông tin phòng, xem hóa đơn, gửi yêu cầu sửa chữa).
+  4. Kết nối giao diện với hệ thống RESTful APIs từ các bạn Backend (Đức, Long, Trung).
+  5. Tối ưu hiển thị đa thiết bị (Responsive Design) tương thích mượt mà trên Desktop/Laptop, Tablet và Điện thoại thông minh (Mobile).
+- **Sản phẩm bàn giao:**
+  - Bộ giao diện mẫu (Mockup/Figma/Wireframe);
+  - Mã nguồn hoàn chỉnh thư mục `src/frontend/`;
+  - Màn hình giao diện đã kết nối dữ liệu thật và vượt qua bài test hiển thị đa thiết bị.
+
+#### 2. Nguyễn Đình Đức [DT] — Database & Core Backend Engineer
+- **Vị trí / Vai trò:** Kỹ sư CSDL & Backend phân hệ cốt lõi (Căn hộ, Khách thuê, Hợp đồng).
+- **Thư mục mã nguồn phụ trách trên Git:** `src/backend/modules/apartments/`, `src/backend/modules/customers/`, `src/backend/modules/contracts/`
+- **Nhánh Git:** `feature/duc-core`
+- **Nhiệm vụ cụ thể:**
+  1. Chủ trì thiết kế CSDL (Mô hình thực thể ERD, Physical Database Schema, các ràng buộc toàn vẹn khóa chính - khóa ngoại).
+  2. Phối hợp chuẩn hóa và vẽ biểu đồ **Class Diagram** (Mục 1.7.3 Tuần 3-4).
+  3. Lập trình Backend APIs cho phân hệ Quản lý Căn hộ (CRUD phòng, lọc trạng thái phòng: trống, đã thuê, sửa chữa).
+  4. Lập trình Backend APIs cho phân hệ Hồ sơ khách thuê (thông tin cá nhân, CCCD, thông tin liên hệ).
+  5. Lập trình Backend APIs cho phân hệ Quản lý Hợp đồng (lập hợp đồng mới, tính tiền cọc, gia hạn, thanh lý hợp đồng).
+- **Sản phẩm bàn giao:**
   - Script khởi tạo CSDL (`schema.sql` hoặc DB Migrations);
-  - File biểu đồ **Class Diagram** đạt chuẩn UML 2.5;
-  - Bộ mã nguồn Backend và tài liệu API cho phân hệ Căn hộ, Khách thuê và Hợp đồng (`src/backend/modules/core/`).
-* **Tiêu chí hoàn thành (DoD):** Toàn bộ API CRUD căn hộ/khách/hợp đồng hoạt động ổn định, kiểm soát chặt chẽ ràng buộc khóa ngoại và điều kiện nghiệp vụ; mã nguồn merge vào `develop`.
+  - File biểu đồ **Class Diagram** chuẩn UML 2.5;
+  - Mã nguồn Backend phân hệ Căn hộ, Khách thuê và Hợp đồng.
 
----
+#### 3. Nguyễn Hoàng Long [DT] — Financial & Billing Backend Engineer
+- **Vị trí / Vai trò:** Kỹ sư Backend phân hệ Tài chính, Điện nước, Hóa đơn & Công nợ.
+- **Thư mục mã nguồn phụ trách trên Git:** `src/backend/modules/utilities/`, `src/backend/modules/invoices/`, `src/backend/modules/payments/`
+- **Nhánh Git:** `feature/long-finance`
+- **Nhiệm vụ cụ thể:**
+  1. Lập trình phân hệ Ghi nhận chỉ số điện nước theo từng kỳ và từng căn hộ; kiểm soát tính hợp lệ (chỉ số mới ≥ chỉ số cũ, không trùng kỳ).
+  2. Lập trình thuật toán tự động sinh Hóa đơn hàng tháng (Tiền phòng + Tiền điện + Tiền nước + Phí dịch vụ phát sinh).
+  3. Lập trình chức năng ghi nhận thanh toán nhiều lần cho cùng một hóa đơn (khách trả góp/trả trước một phần).
+  4. Lập trình thuật toán bù trừ và theo dõi công nợ lũy kế.
+  5. Xây dựng APIs xuất báo cáo tài chính tổng hợp: Số tiền phải thu, Số tiền thực thu và Tổng công nợ còn lại.
+- **Sản phẩm bàn giao:**
+  - Mã nguồn Backend phân hệ Tài chính & Điện nước;
+  - APIs tổng hợp báo cáo tài chính;
+  - Kết quả kiểm thử thuật toán tính tiền khớp 100% với bộ dữ liệu mẫu (Golden dataset) của bạn Bùi Phương Minh.
 
-#### 👤 3. Nguyễn Hoàng Long — DT (Financial & Billing Backend Lead)
-* **Vai trò:** Backend phân hệ Tài chính, Điện nước, Hóa đơn & Công nợ.
-* **Nhánh Git phụ trách:** `feature/long-finance-billing`
-* **Nhiệm vụ chi tiết:**
-  - Xây dựng chức năng ghi chỉ số điện nước theo kỳ và theo từng căn hộ; kiểm tra tính hợp lệ của dữ liệu (chỉ số mới ≥ chỉ số cũ, không nhập trùng kỳ).
-  - Lập trình logic tính phí dịch vụ tự động theo định mức hoặc đơn giá cố định.
-  - Xây dựng module tự động sinh hóa đơn hàng tháng dựa trên thông tin hợp đồng và số điện/nước tiêu thụ.
-  - Xây dựng chức năng ghi nhận thanh toán nhiều lần cho cùng một hóa đơn (khách trả trước một phần); tự động cập nhật số dư nợ.
-  - Lập trình thuật toán theo dõi công nợ tích lũy và xây dựng APIs báo cáo tổng hợp: Số tiền phải thu, Số tiền thực thu và Công nợ còn lại theo từng kỳ.
-* **Sản phẩm bàn giao:**
-  - Bộ mã nguồn phân hệ Điện nước, Hóa đơn, Thanh toán và Công nợ (`src/backend/modules/billing/`);
-  - Module báo cáo tài chính tổng hợp;
-  - Bộ tài liệu API tài chính & kết quả kiểm tra thuật toán tính toán theo bộ dữ liệu mẫu (Golden dataset) đã thống nhất với BA.
-* **Tiêu chí hoàn thành (DoD):** Tính toán chính xác 100% đến từng đồng, không làm tròn sai lệch; xử lý đúng các trường hợp thanh toán 1 lần hoặc thanh toán nhiều đợt; test pass 100%.
+#### 4. Ninh Văn Thành Trung [DT] — Security, Auth & Maintenance Backend Engineer
+- **Vị trí / Vai trò:** Kỹ sư Bảo mật, Xác thực & Backend phân hệ Quản lý Sự cố sửa chữa.
+- **Thư mục mã nguồn phụ trách trên Git:** `src/backend/modules/auth/`, `src/backend/modules/maintenance/`
+- **Nhánh Git:** `feature/trung-auth-repair`
+- **Nhiệm vụ cụ thể:**
+  1. Xây dựng hệ thống Đăng nhập, Đăng xuất, Quản lý Token/Session và Phân quyền truy cập (RBAC) chặt chẽ giữa Quản lý và Khách thuê.
+  2. Mã hóa an toàn thông tin nhạy cảm (mật khẩu hash/bcrypt), bảo vệ các routes API tránh truy cập trái phép.
+  3. Lập trình phân hệ Quản lý yêu cầu sửa chữa: Khách thuê gửi phản ánh sự cố; Quản lý tiếp nhận, điều phối thợ, cập nhật trạng thái (`Mới` → `Đang xử lý` → `Hoàn thành`) và lưu vết lịch sử.
+  4. Phụ trách vẽ biểu đồ **Sequence Diagram** cho luồng Đăng nhập/Xác thực và luồng Xử lý yêu cầu sửa chữa (Mục 1.7.3 Tuần 5-6).
+- **Sản phẩm bàn giao:**
+  - Mã nguồn Backend phân hệ Xác thực (Auth/RBAC) và phân hệ Yêu cầu sửa chữa;
+  - File biểu đồ **Sequence Diagram** liên quan đến các luồng phụ trách.
 
----
-
-#### 👤 4. Ninh Văn Thành Trung — DT (Security, Auth & Maintenance Backend Lead)
-* **Vai trò:** Backend Xác thực & Phân hệ Quản lý Yêu cầu Sửa chữa.
-* **Nhánh Git phụ trách:** `feature/trung-auth-maintenance`
-* **Nhiệm vụ chi tiết:**
-  - Xây dựng phân hệ Đăng nhập, Đăng xuất, Quản lý phiên làm việc (Session/JWT) và Phân quyền truy cập (RBAC) dựa trên ma trận phân quyền đã được duyệt.
-  - Đảm bảo cơ chế bảo mật mật khẩu (mã hóa hash/bcrypt), bảo vệ các routes API chống truy cập trái quyền.
-  - Xây dựng phân hệ Quản lý yêu cầu sửa chữa: Khách thuê tạo yêu cầu sự cố (hỏng bóng đèn, tắc nước,...); Quản lý tiếp nhận, phân công, cập nhật trạng thái (`Mới` → `Đang xử lý` → `Hoàn thành`) và lưu trữ lịch sử trao đổi.
-  - Phối hợp vẽ các biểu đồ **Sequence Diagram** cho các luồng quan trọng: Đăng nhập/Xác thực và Luồng Tiếp nhận & Xử lý sự cố sửa chữa.
-* **Sản phẩm bàn giao:**
-  - Mã nguồn phân hệ Xác thực & Phân quyền (`src/backend/modules/auth/`);
-  - Mã nguồn phân hệ Yêu cầu Sửa chữa (`src/backend/modules/maintenance/`);
-  - File biểu đồ **Sequence Diagram** cho luồng Auth và luồng Sửa chữa.
-* **Tiêu chí hoàn thành (DoD):** Khách thuê chỉ xem và tạo được yêu cầu trong phạm vi căn hộ của mình; Admin có toàn quyền điều phối; không có lỗ hổng IDOR hoặc lộ thông tin; Sequence Diagram đồng bộ 100% với code.
-
----
-
-#### 👤 5. Nguyễn Đình Ước — DT (QA / Test Lead & Release Engineer)
-* **Vai trò:** Chủ trì công tác kiểm thử phần mềm, Quản lý lỗi (Bug Tracking) và Đóng gói phát hành.
-* **Nhánh Git phụ trách:** `feature/uoc-qa-testing`
-* **Nhiệm vụ chi tiết:**
-  - Chủ trì lập Kế hoạch kiểm thử tổng thể (Test Plan) cho 4 Sprint.
-  - Xây dựng bộ kịch bản kiểm thử (Test Cases) tối thiểu **30 ca kiểm thử** bao phủ đầy đủ: ca kiểm thử luồng chính (Happy path), ca kiểm thử biên (Boundary values), ca kiểm thử dữ liệu không hợp lệ (Negative test) và kiểm tra bảo mật phân quyền.
-  - Thực hiện kiểm thử tích hợp (Integration Testing), kiểm thử giao diện (UI Testing) và kiểm thử hồi quy (Regression Testing) sau mỗi lần merge code.
-  - Quản lý danh sách lỗi phát sinh (Bug tracking log), phân loại mức độ nghiêm trọng và đôn đốc các thành viên DT khắc phục lỗi.
-  - Chuẩn bị môi trường chạy thử (demo environment), file cài đặt/docker-compose, tài liệu hướng dẫn cài đặt và Hướng dẫn sử dụng hệ thống (User Manual).
-* **Sản phẩm bàn giao:**
+#### 5. Nguyễn Đình Ước [DT] — QA / QC Test Lead & Release Engineer
+- **Vị trí / Vai trò:** Trưởng nhóm Kiểm thử phần mềm (QA/QC Lead) & Kỹ sư Đóng gói phát hành.
+- **Thư mục mã nguồn & tài liệu phụ trách trên Git:** `tests/`, `docs/test_plans/`
+- **Nhánh Git:** `feature/uoc-test-release`
+- **Nhiệm vụ cụ thể:**
+  1. Chủ trì lập Kế hoạch kiểm thử tổng thể (Test Plan) cho cả 4 Sprint.
+  2. Xây dựng và thực thi bộ kịch bản kiểm thử (Test Cases) tối thiểu **30 ca kiểm thử** bao phủ đầy đủ: Happy path, kiểm thử biên, dữ liệu không hợp lệ và kiểm tra bảo mật phân quyền.
+  3. Thực hiện kiểm thử tích hợp (Integration Test) và kiểm thử hồi quy (Regression Test) mỗi khi nhóm tích hợp mã nguồn vào `develop`.
+  4. Quản lý danh mục lỗi (Bug Log), phân loại độ nghiêm trọng, theo dõi quá trình sửa lỗi của các thành viên DT.
+  5. Chuẩn bị môi trường chạy thử hệ thống, đóng gói bản demo và viết tài liệu Hướng dẫn sử dụng (User Manual).
+- **Sản phẩm bàn giao:**
   - Kế hoạch kiểm thử (Test Plan);
-  - Bộ 30+ Test Cases chi tiết kèm kết quả pass/fail (`docs/test_plans/test_cases.md`);
-  - Bảng theo dõi và khắc phục lỗi (Bug Log);
-  - Báo cáo kết quả kiểm thử (Test Summary Report);
-  - Bản chạy thử hoàn chỉnh và Tài liệu hướng dẫn sử dụng.
-* **Tiêu chí hoàn thành (DoD):** 100% test cases cốt lõi pass; không còn bug mức High/Critical; tài liệu hướng dẫn dễ hiểu, người ngoài đọc vào chạy được ngay.
+  - Bộ 30+ Test Cases chi tiết (`docs/test_plans/test_cases.md`);
+  - Danh mục lỗi (Bug Log) và Báo cáo kiểm thử tổng kết;
+  - Bản chạy thử nghiệm thu và Tài liệu Hướng dẫn sử dụng.
 
 ---
 
-#### 👤 6. Nguyễn Hải Long — rAI (Business Analyst — Core Modules)
-* **Vai trò:** Khảo sát và Phân tích nghiệp vụ phân hệ Căn hộ, Khách thuê, Hợp đồng.
-* **Nhiệm vụ chi tiết:**
-  - Khảo sát thực tế các cơ sở cho thuê căn hộ dịch vụ về quy trình quản lý phòng, bàn giao căn hộ, quản lý hợp đồng thuê và hồ sơ người thuê.
-  - Nhận diện các rủi ro và khó khăn trong việc quản lý hồ sơ thủ công (hết hạn hợp đồng không kịp gia hạn, không kiểm soát được số người cư trú,...).
-  - Viết tài liệu đặc tả yêu cầu chức năng (Functional Requirements - FR) cho phân hệ Căn hộ, Khách thuê, Hợp đồng.
-  - Xây dựng danh sách và viết chi tiết các kịch bản **Đặc tả Use Case (Use Case Specifications)** cho các nghiệp vụ phụ trách.
-* **Sản phẩm bàn giao:**
-  - Biên bản khảo sát nghiệp vụ thực tế;
-  - Danh mục yêu cầu chức năng phân hệ cốt lõi;
-  - Bảng đặc tả chi tiết các Use Case: Thêm/Sửa/Tìm kiếm Căn hộ, Tiếp nhận hồ sơ khách, Tạo và thanh lý Hợp đồng.
-* **Tiêu chí hoàn thành (DoD):** Bản đặc tả rõ ràng, đầy đủ các bước thực hiện, luồng nhánh và điều kiện tiên quyết; được thành viên DT (Nguyễn Đình Đức) xác nhận khả thi trước khi code.
+### 🅱️ KHỐI rAI (RESEARCH, ANALYSIS & INFORMATION / AI GOVERNANCE — 4 THÀNH VIÊN)
 
----
+#### 6. Nguyễn Hải Long [rAI] — Business Analyst (Core Modules)
+- **Vị trí / Vai trò:** Chuyên viên phân tích nghiệp vụ phân hệ Cốt lõi (Căn hộ, Khách thuê, Hợp đồng).
+- **Thư mục tài liệu phụ trách trên Git:** `docs/surveys/core/`, `docs/uml/usecases/`
+- **Nhánh Git:** `docs/hailong-ba`
+- **Nhiệm vụ cụ thể:**
+  1. Thực hiện khảo sát thực tế quy trình vận hành căn hộ dịch vụ: cách quản lý danh sách phòng, bàn giao căn hộ, thu thập hồ sơ khách và ký kết hợp đồng.
+  2. Xác định các điểm nghẽn, khó khăn và rủi ro thất thoát thông tin khi quản lý thủ công.
+  3. Xây dựng tài liệu Đặc tả yêu cầu chức năng (Functional Requirements - FR) cho phân hệ Căn hộ, Khách thuê, Hợp đồng.
+  4. Xây dựng và viết chi tiết các kịch bản **Đặc tả Use Case (Use Case Specifications)** cho toàn bộ luồng nghiệp vụ cốt lõi.
+  5. Bàn giao đặc tả và phối hợp với bạn Nguyễn Đình Đức [DT] để thiết kế CSDL và lập trình đúng nghiệp vụ.
+- **Sản phẩm bàn giao:**
+  - Nội dung và biên bản khảo sát thực tế;
+  - Danh sách yêu cầu chức năng nghiệp vụ cốt lõi;
+  - Bộ tài liệu đặc tả Use Case chi tiết Quản lý Căn hộ, Khách thuê và Hợp đồng.
 
-#### 👤 7. Bùi Phương Minh — rAI (Business Analyst — Financial Modules)
-* **Vai trò:** Phân tích chuyên sâu nghiệp vụ Tài chính, Điện nước, Hóa đơn & Công nợ.
-* **Nhiệm vụ chi tiết:**
-  - Phân tích chi tiết quy trình chốt số điện nước, cách tính tiền điện nước (theo giá bậc thang nhà nước hoặc đơn giá khoán của chủ cơ sở).
-  - Phân tích quy tắc lập hóa đơn tổng hợp cuối tháng, quy trình thanh toán nhiều đợt và cơ chế tính trừ dần công nợ.
-  - Xác định rõ ràng các công thức tính toán, dữ liệu đầu vào bắt buộc và các trường hợp ngoại lệ (khách chuyển vào giữa tháng, ghi nhầm chỉ số đồng hồ bị giảm, khách trả thiếu hoặc trả thừa).
-  - Xây dựng biểu đồ hoạt động **Activity Diagram** mô tả quy trình ghi điện nước, lập hóa đơn và thanh toán.
-  - Xây dựng **Bộ dữ liệu kiểm thử chuẩn (Golden Dataset)** với các số liệu thực tế để phối hợp với Nguyễn Hoàng Long và Nguyễn Đình Ước đối soát kết quả tính toán của phần mềm.
-* **Sản phẩm bàn giao:**
-  - Tài liệu quy tắc nghiệp vụ tài chính và công thức tính tiền chi tiết;
-  - Tài liệu đặc tả chức năng điện nước, hóa đơn, công nợ;
-  - File biểu đồ **Activity Diagram** quy trình nghiệp vụ tài chính;
-  - Bảng số liệu mẫu (Golden Dataset) dùng làm căn cứ kiểm thử tính toán.
-* **Tiêu chí hoàn thành (DoD):** Công thức toán học rõ ràng, không mâu thuẫn; biểu đồ Activity thể hiện đầy đủ các quyết định nghiệp vụ và nhánh rẽ.
+#### 7. Bùi Phương Minh [rAI] — Business Analyst (Financial & Billing Modules)
+- **Vị trí / Vai trò:** Chuyên viên phân tích nghiệp vụ Tài chính, Điện nước, Hóa đơn & Công nợ.
+- **Thư mục tài liệu phụ trách trên Git:** `docs/surveys/finance/`, `docs/uml/activity/`
+- **Nhánh Git:** `docs/minh-finance`
+- **Nhiệm vụ cụ thể:**
+  1. Phân tích chi tiết quy trình chốt số điện nước, biểu giá điện nước (bậc thang hoặc giá khoán).
+  2. Phân tích nghiệp vụ lập hóa đơn hàng tháng, xử lý thanh toán nhiều lần và thuật toán bù trừ công nợ.
+  3. Làm rõ các công thức tính toán, dữ liệu đầu vào và các trường hợp ngoại lệ (khách vào giữa tháng, chỉ số giảm do đổi đồng hồ, khách trả thừa/thiếu).
+  4. Xây dựng biểu đồ hoạt động **Activity Diagram** quy trình ghi điện nước, tính phí và thanh toán (Mục 1.7.3 Tuần 1-2).
+  5. Xây dựng **Bộ dữ liệu kiểm thử chuẩn (Golden Dataset)** với các số liệu thực tế để đối soát độ chính xác với Nguyễn Hoàng Long [DT] và Nguyễn Đình Ước [DT].
+- **Sản phẩm bàn giao:**
+  - Tài liệu quy tắc nghiệp vụ tài chính và công thức tính phí chi tiết;
+  - Tài liệu đặc tả chức năng điện nước, hóa đơn và công nợ;
+  - Biểu đồ **Activity Diagram** quy trình tài chính;
+  - Bộ dữ liệu mẫu (Golden Dataset) đối chiếu tính toán.
 
----
-
-#### 👤 8. Vũ Thị Thanh — rAI (Project Coordinator & Lead Reporter)
-* **Vai trò:** Nghiên cứu so sánh hệ thống, Yêu cầu phi chức năng, Chủ trì biên tập Báo cáo & Quản lý Quy tắc AI.
-* **Nhiệm vụ chi tiết:**
-  - Nghiên cứu, đánh giá và lập **Bảng so sánh chi tiết** các hệ thống/giải pháp liên quan: Sổ ghi chép/Excel, Smartos PMS, Landsoft Building và giải pháp phần mềm đề xuất của nhóm (Mục 1.3).
-  - Xác định các nhóm tác nhân (Actors) và thiết lập **Ma trận phân quyền (RBAC Matrix)** giữa Quản trị viên và Khách thuê.
-  - Phân tích và soạn thảo danh mục **Yêu cầu phi chức năng (Non-Functional Requirements - NFR)** về hiệu năng, tính bảo mật, tính khả dụng và khả năng tương thích đa thiết bị.
-  - Chủ trì tổng hợp, biên tập và chuẩn hóa toàn bộ file văn bản Báo cáo môn học (định dạng Docx / Google Docs) theo đúng quy chuẩn trình bày của Khoa/Trường: căn lề, mục lục, danh mục bảng biểu lặp lại tiêu đề trang 2, trích dẫn tài liệu tham khảo đúng chuẩn.
-  - Thiết lập và quản lý **Quy tắc sử dụng công cụ AI (Mục 1.8 - AUR.01 đến AUR.99)** và phụ trách viết **Phụ lục Z: Nhật ký sử dụng AI** kèm hệ thống footnote dẫn chiếu trong toàn bộ quyển báo cáo.
-* **Sản phẩm bàn giao:**
+#### 8. Vũ Thị Thanh [rAI] — Project Coordinator, Document Lead & AI Policy Manager
+- **Vị trí / Vai trò:** Trưởng nhóm Tài liệu & Điều phối dự án, Quản lý Quy chuẩn AI.
+- **Thư mục tài liệu phụ trách trên Git:** `docs/reports/`, `QUY_TAC_SU_DUNG_AI.md`
+- **Nhánh Git:** `docs/thanh-lead`
+- **Nhiệm vụ cụ thể:**
+  1. Nghiên cứu, đánh giá và lập bảng so sánh chi tiết các hệ thống liên quan: Sổ ghi chép/Excel, Smartos PMS, Landsoft Building và hệ thống đề xuất của nhóm (Mục 1.3).
+  2. Xác định các nhóm tác nhân (Actors) và xây dựng **Ma trận phân quyền (RBAC Matrix)** giữa Quản trị viên và Khách thuê.
+  3. Phân tích và soạn thảo danh mục **Yêu cầu phi chức năng (Non-Functional Requirements - NFR)** về giao diện, độ bảo mật, hiệu năng và tính khả dụng.
+  4. Viết đặc tả Use Case cho chức năng Đăng nhập và Đăng xuất.
+  5. Chủ trì thu thập, tổng hợp, hiệu đính và chuẩn hóa toàn bộ quyển **Báo cáo đồ án môn học** (file văn bản Word/Google Docs) theo đúng quy chuẩn trình bày của Khoa/Trường: căn lề, mục lục, bảng biểu lặp lại tiêu đề trang 2, trích dẫn tài liệu tham khảo đúng chuẩn CNPM.
+  6. Quản lý việc tuân thủ quy tắc sử dụng AI (Mục 1.8 - AUR.01 đến AUR.99) và chủ trì biên soạn **Phụ lục Z: Nhật ký sử dụng AI** kèm hệ thống footnote dẫn chiếu trong toàn bộ báo cáo.
+- **Sản phẩm bàn giao:**
   - Bảng so sánh các hệ thống liên quan (Mục 1.3.4);
-  - Ma trận phân quyền chi tiết (RBAC Matrix);
+  - Ma trận phân quyền (RBAC Matrix);
+  - Bảng đặc tả Use Case Đăng nhập, Đăng xuất;
   - Danh sách yêu cầu phi chức năng (NFR);
-  - Bảng đặc tả Use Case Đăng nhập / Đăng xuất;
-  - Toàn bộ quyển Báo cáo tổng hợp môn học hoàn chỉnh (từ Lời mở đầu, Chương 1 đến Chương 6, Phụ lục A đến Z);
+  - Quyển Báo cáo tổng hợp môn học hoàn chỉnh;
   - Phụ lục Z: Nhật ký sử dụng AI hoàn chỉnh.
-* **Tiêu chí hoàn thành (DoD):** Quyển báo cáo được định dạng đẹp, không lỗi chính tả, trích dẫn chuẩn chỉ, đầy đủ chữ ký xác nhận đóng góp của 9 thành viên; tuân thủ 100% quy định của giảng viên.
 
----
-
-#### 👤 9. Nguyễn Tuyết Mai — rAI (Business Analyst — Maintenance & Survey Lead)
-* **Vai trò:** Khảo sát nghiệp vụ Sửa chữa, Xử lý số liệu thực tế & Ẩn danh hóa dữ liệu.
-* **Nhiệm vụ chi tiết:**
-  - Trực tiếp khảo sát thực tế tại các căn hộ dịch vụ về cách thức tiếp nhận phản ánh hư hỏng thiết bị (điều hòa, bóng đèn, khóa cửa, ống nước).
-  - Xác định các trường thông tin cần lưu trữ khi tạo yêu cầu, các trạng thái vòng đời của một phiếu sửa chữa (`Chờ xử lý`, `Đang sửa`, `Đã nghiệm thu`, `Hủy`).
-  - Xây dựng biểu đồ hoạt động **Activity Diagram** mô tả toàn diện quy trình từ lúc khách thuê phát hiện sự cố đến khi người quản lý điều phối thợ sửa và nghiệm thu xong.
-  - Phụ trách tổng hợp toàn bộ kết quả khảo sát sơ bộ của nhóm (Mục 1.1.2), vẽ biểu đồ tròn/cột thống kê khó khăn; thực hiện việc **ẩn danh hóa dữ liệu (Data Anonymization)** để bảo vệ thông tin cá nhân của người được khảo sát theo đúng chuẩn học thuật.
-* **Sản phẩm bàn giao:**
-  - Bảng tổng hợp số liệu khảo sát và biểu đồ thống kê đã được ẩn danh;
-  - Bảng đặc tả Use Case nghiệp vụ Tiếp nhận & Xử lý yêu cầu sửa chữa;
-  - File biểu đồ **Activity Diagram** quy trình xử lý sự cố.
-* **Tiêu chí hoàn thành (DoD):** Dữ liệu khảo sát trung thực, đã loại bỏ thông tin nhạy cảm; biểu đồ Activity Diagram chuẩn UML; phối hợp với Ninh Văn Thành Trung để hoàn thiện chức năng.
+#### 9. Nguyễn Tuyết Mai [rAI] — Business Analyst (Maintenance & Survey Lead)
+- **Vị trí / Vai trò:** Chuyên viên phân tích nghiệp vụ Sửa chữa & Khảo sát số liệu thực tế.
+- **Thư mục tài liệu phụ trách trên Git:** `docs/surveys/maintenance/`, `docs/uml/activity/`
+- **Nhánh Git:** `docs/mai-survey`
+- **Nhiệm vụ cụ thể:**
+  1. Trực tiếp khảo sát thực tế về cách tiếp nhận và xử lý sự cố thiết bị tại các căn hộ dịch vụ; xác định các khó khăn và nhu cầu lưu vết lịch sử sửa chữa.
+  2. Xác định các trường dữ liệu cần lưu trữ và định nghĩa chu trình trạng thái của phiếu sửa chữa (`Mới` → `Đang xử lý` → `Hoàn thành`).
+  3. Xây dựng biểu đồ hoạt động **Activity Diagram** mô tả toàn diện quy trình tiếp nhận, phân công thợ và nghiệm thu sửa chữa (Mục 1.7.3 Tuần 1-2).
+  4. Tổng hợp, kiểm tra và thống kê số liệu khảo sát sơ bộ của nhóm (vẽ biểu đồ tỷ lệ, phân tích khó khăn); thực hiện **ẩn danh hóa dữ liệu (Data Anonymization)** để bảo mật thông tin người được khảo sát theo chuẩn học thuật.
+  5. Bàn giao kết quả phân tích cho Ninh Văn Thành Trung [DT] để lập trình module sửa chữa.
+- **Sản phẩm bàn giao:**
+  - Bảng tổng hợp số liệu khảo sát đã được ẩn danh;
+  - Tài liệu đặc tả Use Case nghiệp vụ Tiếp nhận & Xử lý yêu cầu sửa chữa;
+  - File biểu đồ **Activity Diagram** quy trình sửa chữa.
 
 ---
 
