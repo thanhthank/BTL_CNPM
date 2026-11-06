@@ -103,22 +103,13 @@ BTL_CNPM/
 ## 💻 6. Hướng dẫn khởi tạo và làm việc nhóm với Git
 
 ### Bước 1: Khởi tạo Git repo và đưa lên GitHub
+Repository đã được tạo và đẩy lên GitHub:
+🔗 **URL Repository:** [https://github.com/thanhthank/BTL_CNPM](https://github.com/thanhthank/BTL_CNPM)
+
 ```bash
-# 1. Di chuyển vào thư mục dự án
-cd C:\Users\vutha\Desktop\BTL_CNPM
-
-# 2. Khởi tạo Git (nếu chưa có)
-git init
-git branch -M main
-
-# 3. Thêm tất cả file và tạo commit ban đầu
-git add .
-git commit -m "feat: khoi tao cau truc du an BTL CNPM - Quan ly cho thue can ho"
-
-# 4. Tạo repo mới trên GitHub (ví dụ: BTL_CNPM_QuanLyCanHo)
-# Sau đó liên kết và push code lên nhánh main
-git remote add origin https://github.com/<tai-khoan-cua-ban>/BTL_CNPM_QuanLyCanHo.git
-git push -u origin main
+# Clone dự án về máy:
+git clone https://github.com/thanhthank/BTL_CNPM.git
+cd BTL_CNPM
 ```
 
 ### Bước 2: Tạo nhánh phát triển `develop`
